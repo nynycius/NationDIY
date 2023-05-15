@@ -1,0 +1,66 @@
+<ng-container *ngIf="profileData">
+    <div class="container pt-5">
+        <mat-card class=" container p-3 rounded-5" >
+            <div class="d-flex">
+                <div class="row">
+                    <!-- User img area -->
+                    <div class="col-2">
+                        <img src="https://www.kindpng.com/picc/m/146-1468390_transparent-shadow-person-png-missing-answers-picture-icon.png"
+                            alt="" class="img-fluid avatar-lg rounded-circle">
+        
+                    </div>
+                    <!-- User name and creation date -->
+                    <div class="col  m-auto ">
+                        <div class="d-block justify-content-start">
+        
+                            <h1 class=" fs-1 text-capitalize"> {{profileData.username}} </h1>
+        
+                            <i class="fa-solid fa-calendar-days fs-5 text-muted"> User since {{ profileData.createdAt | toDate}} </i>
+        
+                        </div>
+        
+        
+                    </div>
+        
+                </div>
+            </div>
+        
+            <div class="row">
+        
+                <!-- pills to show user activity  -->
+                <div class="col">
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <div class="tab-pane fade show active" id="v-pills-act" role="tabpanel"
+                            aria-labelledby="v-pills-act-tab">
+                            <nav>
+                                <div class="nav nav-tabs justify-content-around fs-1" id="nav-tab" role="tablist">
+
+                                    <button class="nav-link active p-4" id="nav-questions-tab" data-bs-toggle="tab"data-bs-target="#nav-questions" type="button" 
+                                    role="tab" aria-controls="nav-questions"aria-selected="true">
+                                        Questions
+                                    </button>
+        
+                                </div>
+                            </nav>
+                            <div class="tab-content p-3" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="nav-questions" role="tabpanel" aria-labelledby="nav-questions-tab">
+                                    
+                                    <div class="container p-3 d-flex justify-content-center">
+                                        <ng-container *ngFor="let question of profileData.questions">
+                                            <app-question-preview [question]="question" class="w-75 d-block mb-3"></app-question-preview>
+                                        </ng-container>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+        
+        
+                    </div>
+        
+        
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</ng-container>

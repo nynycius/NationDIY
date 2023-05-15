@@ -1,0 +1,26 @@
+<div class=" container p-3 pt-5">
+    <div class="row">
+        
+        <div id="mainbar">
+            <!-- title -->
+            
+            <mat-card class="p-2 mb-3">
+                <h1 class="text-start pt-2 ps-2 m-0">All Questions</h1>
+                <hr>
+                <div class="d-flex justify-content-end">
+
+                    <div class="justify-content-end ps-5">
+                        <!--  open as question dialog  -->
+                        <a class="flex-item btn btn-lg btn-primary" (click)="dialogService.openPostQuestionDialog()"> Ask a Question</a>
+                    </div>
+
+                </div>
+            </mat-card>
+            <!--  bring question table for search -->
+            <app-questions-table></app-questions-table>
+
+        </div>
+
+    </div>
+
+</div>
