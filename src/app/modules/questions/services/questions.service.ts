@@ -8,13 +8,13 @@ import { Question } from 'src/app/shared/question.interface';
   providedIn: 'root'
 })
 
-// interacts with backend for generate services 
+// interacts with backend for generate services
 export class QuestionsService {
-  //uses http to send requests through API , in this service is used GET, POST, PATCH and DELETE requests to create methods that will be used to implement complexs logics in the application 
+  //uses http to send requests through API , in this service is used GET, POST, PATCH and DELETE requests to create methods that will be used to implement complexs logics in the application
   constructor(private httpClient: HttpClient) { }
 
   getQuestions(tag: string = "") {
-    return this.httpClient.get<Question[]>('api/questions', {params: {tag}})
+    return this.httpClient.get<Question[]>('https://nation-diy.vercel.app/questions', {params: {tag}})
   }
 
   queryQuestions(pageNumber: number, pageSize: number, tag: string) {
@@ -23,7 +23,7 @@ export class QuestionsService {
       .set('pageSize', pageSize)
       .set('tag', tag)
 
-    return this.httpClient.get<any>("api/questions", { params })
+    return this.httpClient.get<any>("https://nation-diy.vercel.app/questions", { params })
   }
 
   postQuestion(title: string, tags: string | null, body: string){
@@ -63,7 +63,7 @@ export class QuestionsService {
   }
 
   getTags(){
-    return this.httpClient.get<any>(`api/questions/tags`) 
+    return this.httpClient.get<any>(`api/questions/tags`)
   }
 
   postComment(questionId: string, commentBody: string){
