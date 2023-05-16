@@ -25,15 +25,17 @@ export class QuestionsTableComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     const tag = this.route.snapshot.queryParamMap.get('tag') || "";
-    
+
     this.loadDataSource(tag)
-    // this.route.params.subscribe( params => {      
+    // this.route.params.subscribe( params => {
     //   this.loadDataSource(params['tag'] || "")
     // })
   }
 
   loadDataSource(tag: string) {
     this.questionService.getQuestions(tag).subscribe(questions => {
+
+      console.log(questions)
 
       if (!questions) {
         this.router.navigateByUrl('/500')
