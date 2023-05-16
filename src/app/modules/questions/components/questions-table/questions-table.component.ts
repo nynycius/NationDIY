@@ -35,8 +35,6 @@ export class QuestionsTableComponent implements AfterViewInit {
   loadDataSource(tag: string) {
     this.questionService.getQuestions(tag).subscribe(questions => {
 
-      console.log(questions)
-
       if (!questions) {
         this.router.navigateByUrl('/500')
         return
