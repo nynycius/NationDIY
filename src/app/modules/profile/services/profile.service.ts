@@ -9,6 +9,6 @@ export class ProfileService {
   constructor(private httpClient: HttpClient) { }
 
   getProfile(userId: string) {
-    return this.httpClient.get<any>(`api/users/${userId}`)
+    return this.httpClient.get<any>(`https://nation-diy.vercel.app/users/${userId}`)
   }
 }

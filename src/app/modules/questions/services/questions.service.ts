@@ -27,50 +27,50 @@ export class QuestionsService {
   }
 
   postQuestion(title: string, tags: string | null, body: string){
-    return this.httpClient.post<any>('api/questions', { title, tags: tags ? Array.from(tags) : null, body })
+    return this.httpClient.post<any>('https://nation-diy.vercel.app/questions', { title, tags: tags ? Array.from(tags) : null, body })
   }
 
   getQuestionById(questionId: string): Observable<Question | null> {
-    return this.httpClient.get<any>(`api/questions/${questionId}`)
+    return this.httpClient.get<any>(`https://nation-diy.vercel.app/questions/${questionId}`)
   }
 
   deleteQuestion(questionId: string){
-    return this.httpClient.delete<{sucess: boolean}>(`api/questions/${questionId}`)
+    return this.httpClient.delete<{sucess: boolean}>(`https://nation-diy.vercel.app/questions/${questionId}`)
   }
 
   voteQuestion(questionId: string, value: number) {
-    return this.httpClient.patch<any>(`api/questions/${questionId}/vote`, { value });
+    return this.httpClient.patch<any>(`https://nation-diy.vercel.app/questions/${questionId}/vote`, { value });
   }
 
   answerQuestion(questionId: string, answerBody: string) {
-    return this.httpClient.post<any>(`api/questions/${questionId}/answers`, { body: answerBody });
+    return this.httpClient.post<any>(`https://nation-diy.vercel.app/questions/${questionId}/answers`, { body: answerBody });
   }
 
   getQuestionAnswers(questionId: string): Observable<Answer[]> {
-    return this.httpClient.get<Answer[]>(`api/questions/${questionId}/answers`)
+    return this.httpClient.get<Answer[]>(`https://nation-diy.vercel.app/questions/${questionId}/answers`)
   }
 
   acceptAnswer(answerId: string, questionId: string){
-    return this.httpClient.patch<any>(`api/questions/${questionId}/accept-answer`, { answerId });
+    return this.httpClient.patch<any>(`https://nation-diy.vercel.app/questions/${questionId}/accept-answer`, { answerId });
   }
 
   voteAnswer(answerId: string, questionId: string, value: number) {
-    return this.httpClient.patch<any>(`api/questions/${questionId}/answers/${answerId}/vote`, { value })
+    return this.httpClient.patch<any>(`https://nation-diy.vercel.app/questions/${questionId}/answers/${answerId}/vote`, { value })
   }
 
   deleteAnswer(answerId: string, questionId: string){
-    return this.httpClient.delete<{sucess: boolean}>(`api/questions/${questionId}/answers/${answerId}`)
+    return this.httpClient.delete<{sucess: boolean}>(`https://nation-diy.vercel.app/questions/${questionId}/answers/${answerId}`)
   }
 
   getTags(){
-    return this.httpClient.get<any>(`api/questions/tags`)
+    return this.httpClient.get<any>(`https://nation-diy.vercel.app/questions/tags`)
   }
 
   postComment(questionId: string, commentBody: string){
-    return this.httpClient.post<any>(`api/questions/${questionId}/comments`, { body: commentBody });
+    return this.httpClient.post<any>(`https://nation-diy.vercel.app/questions/${questionId}/comments`, { body: commentBody });
   }
 
   postAnswerComment(answerId: string, questionId: string, commentBody: string){
-    return this.httpClient.post<any>(`api/questions/${questionId}/answers/${answerId}/comments`, { body: commentBody });
+    return this.httpClient.post<any>(`https://nation-diy.vercel.app/questions/${questionId}/answers/${answerId}/comments`, { body: commentBody });
   }
 }
