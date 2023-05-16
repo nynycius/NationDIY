@@ -52,7 +52,7 @@ export class AuthenticationService {
   }
 
   signup(email: string, username: string, password: string) {
-    return this.httpClient.post<any>('api/auth/signup', { email, username, password }).pipe(
+    return this.httpClient.post<any>('https://nation-diy.vercel.app/auth/signup', { email, username, password }).pipe(
       tap((response) => {
         localStorage.setItem(this.TOKEN_NAME, response.token)
         this.authenticateUser()
@@ -61,7 +61,7 @@ export class AuthenticationService {
   }
 
   login(emailOrUsername: string, password: string) {
-    return this.httpClient.post<any>('api/auth/login', { emailOrUsername, password }).pipe(
+    return this.httpClient.post<any>('https://nation-diy.vercel.app/auth/login', { emailOrUsername, password }).pipe(
       tap((response) => {
         localStorage.setItem(this.TOKEN_NAME, response.token)
         this.authenticateUser()
@@ -71,7 +71,7 @@ export class AuthenticationService {
   }
 
   checkAvailability(emailOrUsername: string) {
-    return this.httpClient.post<any>('api/auth/check-availability', { emailOrUsername })
+    return this.httpClient.post<any>('https://nation-diy.vercel.app/auth/check-availability', { emailOrUsername })
   }
 
   logout(){
